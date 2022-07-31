@@ -1,45 +1,44 @@
 #####  PRUEBA HEYFOOD API
 
-**Table of Contents**
 
-[TOCM]
 
-####Instalar proyecto
+#### Instalar proyecto
+
+<pre>composer install
+</pre>
+
+#### .ENV ( Configurar variables de entorno en .env )
 
 <pre>
-	composer install
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravelApi
+DB_USERNAME=root
+DB_PASSWORD=
 </pre>
-
-####.ENV ( Configurar variables de entorno en .env )
-
+#### .Crear las tablas que utilizara la API
 <pre>
-	DB_CONNECTION=mysql
-	DB_HOST=127.0.0.1
-	DB_PORT=3306
-	DB_DATABASE=laravelApi
-	DB_USERNAME=root
-	DB_PASSWORD=
+php artisan migrate
 </pre>
-####.Crear las tablas que utilizara la API
+
+#### .Crear datos de prueba y usuario de prueba para autentificacion 
 <pre>
-	php artisan migrate
+php artisan db:seed
 </pre>
 
-####.Crear datos de prueba y usuario de prueba para autentificacion 
-<pre>
-	php artisan db:seed
+#### .Inicializar proyecto
+<pre>php artisan serve
 </pre>
 
-####.Inicializar proyecto
-<pre>	php artisan serve
-</pre>
-
-####.Documentación API
+#### .Documentación API
 - 'Accept: application/json';
 
-####Obtención de token de autentificacion (GET)
-#####Request
-<pre>	http://localhost:8000/api/loginApi
+#### Obtención de token de autentificacion (GET)
+
+##### Request
+
+<pre>http://localhost:8000/api/loginApi
 
 	curl --location --request POST 'http://localhost:8000/api/loginApi' \
 --header 'Content-Type: application/json' \
@@ -48,7 +47,8 @@
 
 
 
-#####Response
+##### Response
+
 <pre>{
     "token": "3|zkwYb1xrCJUwNhQBHtIAAgVzFPXAHqBD5iQCw2Us"
 }
@@ -56,8 +56,9 @@
 
 
 
-####Obtención de recetas (GET)
-#####Request
+#### Obtención de recetas (GET)
+
+##### Request
 
 <pre>http://localhost:8000/api/recetas
 
@@ -66,7 +67,8 @@ curl --location --request GET 'http://localhost:8000/api/recetas' \
 --header 'Authorization: Bearer {tokenAutentificacion}'
 </pre>
 
-#####Response
+##### Response
+
 <pre>[
     {
         "id": 1,
@@ -89,8 +91,8 @@ curl --location --request GET 'http://localhost:8000/api/recetas' \
 ]
 </pre>
 
-####Agregar nueva receta (POST)
-#####Request
+#### Agregar nueva receta (POST)
+##### Request
 
 <pre>http://localhost:8000/api/recetas
 
@@ -104,12 +106,14 @@ curl --location --request POST 'http://localhost:8000/api/recetas' \
     "precio": 1000}'
 </pre>
 
-#####Response
+##### Response
+
 <pre>"Receta agregada con exito"
 </pre>
 
-####Editar una receta (PUT)
-#####Request
+#### Editar una receta (PUT)
+
+##### Request
 
 Parametro Id sera la receta a editar
 <pre>http://localhost:8000/api/recetas/{id}/
@@ -124,12 +128,14 @@ curl --location --request PUT 'http://localhost:8000/api/recetas/{id}' \
     "precio": 12345}'
 </pre>
 
-#####Response
+##### Response
+
 <pre>"Receta actualizada con exito"
 </pre>
 
-####Editar una receta (DELETE)
-#####Request
+#### Editar una receta (DELETE)
+
+##### Request
 
 Parametro Id sera la receta a editar
 <pre>http://localhost:8000/api/recetas/{id}/
@@ -138,18 +144,6 @@ curl --location --request DELETE 'http://localhost:8000/api/recetas/{id}' \
 --header 'Authorization: Bearer {tokenAutentificacion}'
 </pre>
 
-#####Response
+##### Response
 <pre>"Receta eliminada con exito"
 </pre>
-
-
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-
