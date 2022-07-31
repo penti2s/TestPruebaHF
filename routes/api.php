@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\TokenController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,11 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('loginApi', [TokenController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/recetas', 'App\Http\Controllers\RecetasController@index');
+    Route::post('/recetas', 'App\Http\Controllers\RecetasController@store');
+    Route::put('/recetas/{id}', 'App\Http\Controllers\RecetasController@update');
+    Route::delete('/recetas/{id}', 'App\Http\Controllers\RecetasController@destroy');
 });
 
-Route::get('/recetas', 'App\Http\Controllers\RecetasController@index');
-Route::post('/recetas', 'App\Http\Controllers\RecetasController@store');
-Route::put('/recetas/{id}', 'App\Http\Controllers\RecetasController@update');
-Route::delete('/recetas/{id}', 'App\Http\Controllers\RecetasController@destroy');

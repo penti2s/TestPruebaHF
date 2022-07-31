@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PocionesSedder::class); // Seeder de pociones
         $this->call(RecetasSedder::class); // Seeder de recetas
+        $this->call(UserTest::class); // Seeder de usuarios
     }
 }
