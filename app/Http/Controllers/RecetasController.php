@@ -84,7 +84,7 @@ class RecetasController extends Controller
         $recetas->precio = $request->precio;
         $recetas->save();
 
-        return $recetas;
+        return response()->json('Receta actualizada con exito', 200);
     }
 
     /**
@@ -96,6 +96,6 @@ class RecetasController extends Controller
     public function destroy(Request $request)
     {
         $recetas = Recetas::destroy($request->id);
-        return $recetas;
+        return response()->json('Receta eliminada con exito', 200);
     }
 }
