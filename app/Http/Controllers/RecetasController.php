@@ -42,6 +42,8 @@ class RecetasController extends Controller
         $recetas->cantidad = $request->cantidad;
         $recetas->precio = $request->precio;
         $recetas->save();
+        //return json response
+        return response()->json('Receta agregada con exito', 201);
     }
 
     /**
