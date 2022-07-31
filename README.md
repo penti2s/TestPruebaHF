@@ -34,7 +34,7 @@ php artisan db:seed
 #### .Documentación API
 - 'Accept: application/json';
 
-#### Obtención de token de autentificacion (GET)
+#### Obtención de token de autentificacion (POST)
 
 ##### Request
 
